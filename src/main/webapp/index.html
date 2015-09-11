@@ -1,0 +1,29 @@
+<html ng-app="demoApp">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+	<h2>Demo</h2>
+	<div ng-controller="DemoController">
+		<div ng-repeat="service in services">
+			<input type="text" ng-model="service.time">
+			<button class="btn btn-success" ng-click="start(service)"
+				ng-if="!service.running">start {{service.path}}</button>
+			<button class="btn btn-danger" ng-click="stop(service)"
+				ng-if="service.running">stop {{service.path}}</button>
+			<pre>{{service.lastResponse | json}}</pre>
+		</div>
+		<div>
+			<input type="text" ng-model="value">
+			<button class="btn btn-success" ng-click="sendToGauge()">send
+				to counter</button>
+			<pre>{{response | json}}</pre>
+
+		</div>
+	</div>
+</body>
+</html>
